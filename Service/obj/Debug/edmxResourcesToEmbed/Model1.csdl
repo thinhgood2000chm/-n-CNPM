@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLCHDCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="doChoi">
+    <Key>
+      <PropertyRef Name="Ma_sp" />
+    </Key>
+    <Property Name="Ma_sp" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten_sp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Nsx" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Don_gia" Type="Int32" />
+    <Property Name="Loai_do_choi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="thanhToans" Relationship="Self.FK__thanhToan__Ma_sp__5441852A" FromRole="doChoi" ToRole="thanhToan" />
+  </EntityType>
+  <EntityType Name="khachHang">
+    <Key>
+      <PropertyRef Name="Ma_kh" />
+    </Key>
+    <Property Name="Ma_kh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ho_ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Gioi_tinh" Type="Boolean" />
+    <Property Name="Lan_mua" Type="Int32" />
+    <NavigationProperty Name="thanhToans" Relationship="Self.FK__thanhToan__Ma_kh__534D60F1" FromRole="khachHang" ToRole="thanhToan" />
+  </EntityType>
+  <EntityType Name="nhanVien">
+    <Key>
+      <PropertyRef Name="Ma_nv" />
+    </Key>
+    <Property Name="Ma_nv" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ho_ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Gioi_tinh" Type="Boolean" />
+    <Property Name="Chuc_vu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ngay_sinh" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="taiKhoan">
+    <Key>
+      <PropertyRef Name="stt" />
+      <PropertyRef Name="tenTK" />
+    </Key>
+    <Property Name="stt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenNV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Chuc_vu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tenTK" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="matkhau" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="thanhToan">
+    <Key>
+      <PropertyRef Name="Ma_kh" />
+      <PropertyRef Name="Ma_sp" />
+    </Key>
+    <Property Name="Ma_kh" Type="Int32" Nullable="false" />
+    <Property Name="Ma_sp" Type="Int32" Nullable="false" />
+    <Property Name="Ho_ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="So_luong" Type="Int32" />
+    <Property Name="Gia_tien" Type="Int32" />
+    <Property Name="Tien_khach_tra" Type="Int32" />
+    <NavigationProperty Name="doChoi" Relationship="Self.FK__thanhToan__Ma_sp__5441852A" FromRole="thanhToan" ToRole="doChoi" />
+    <NavigationProperty Name="khachHang" Relationship="Self.FK__thanhToan__Ma_kh__534D60F1" FromRole="thanhToan" ToRole="khachHang" />
+  </EntityType>
+  <Association Name="FK__thanhToan__Ma_sp__5441852A">
+    <End Role="doChoi" Type="Self.doChoi" Multiplicity="1" />
+    <End Role="thanhToan" Type="Self.thanhToan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="doChoi">
+        <PropertyRef Name="Ma_sp" />
+      </Principal>
+      <Dependent Role="thanhToan">
+        <PropertyRef Name="Ma_sp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__thanhToan__Ma_kh__534D60F1">
+    <End Role="khachHang" Type="Self.khachHang" Multiplicity="1" />
+    <End Role="thanhToan" Type="Self.thanhToan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="khachHang">
+        <PropertyRef Name="Ma_kh" />
+      </Principal>
+      <Dependent Role="thanhToan">
+        <PropertyRef Name="Ma_kh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLCHDCEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="doChois" EntityType="Self.doChoi" />
+    <EntitySet Name="khachHangs" EntityType="Self.khachHang" />
+    <EntitySet Name="nhanViens" EntityType="Self.nhanVien" />
+    <EntitySet Name="taiKhoans" EntityType="Self.taiKhoan" />
+    <EntitySet Name="thanhToans" EntityType="Self.thanhToan" />
+    <AssociationSet Name="FK__thanhToan__Ma_sp__5441852A" Association="Self.FK__thanhToan__Ma_sp__5441852A">
+      <End Role="doChoi" EntitySet="doChois" />
+      <End Role="thanhToan" EntitySet="thanhToans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__thanhToan__Ma_kh__534D60F1" Association="Self.FK__thanhToan__Ma_kh__534D60F1">
+      <End Role="khachHang" EntitySet="khachHangs" />
+      <End Role="thanhToan" EntitySet="thanhToans" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

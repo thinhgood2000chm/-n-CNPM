@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLCHDCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="doChoi">
+          <Key>
+            <PropertyRef Name="Ma_sp" />
+          </Key>
+          <Property Name="Ma_sp" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ten_sp" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nsx" Type="nvarchar" MaxLength="50" />
+          <Property Name="Don_gia" Type="int" />
+          <Property Name="Loai_do_choi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="khachHang">
+          <Key>
+            <PropertyRef Name="Ma_kh" />
+          </Key>
+          <Property Name="Ma_kh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ho_ten" Type="nvarchar" MaxLength="50" />
+          <Property Name="SDT" Type="char" MaxLength="1" />
+          <Property Name="Gioi_tinh" Type="bit" />
+          <Property Name="Lan_mua" Type="int" />
+        </EntityType>
+        <EntityType Name="nhanVien">
+          <Key>
+            <PropertyRef Name="Ma_nv" />
+          </Key>
+          <Property Name="Ma_nv" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ho_ten" Type="nvarchar" MaxLength="50" />
+          <Property Name="Diachi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gioi_tinh" Type="bit" />
+          <Property Name="Chuc_vu" Type="varchar" MaxLength="50" />
+          <Property Name="Ngay_sinh" Type="datetime" />
+        </EntityType>
+        <EntityType Name="taiKhoan">
+          <Key>
+            <PropertyRef Name="stt" />
+            <PropertyRef Name="tenTK" />
+          </Key>
+          <Property Name="stt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenNV" Type="nvarchar" MaxLength="50" />
+          <Property Name="Chuc_vu" Type="varchar" MaxLength="50" />
+          <Property Name="tenTK" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="matkhau" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="thanhToan">
+          <Key>
+            <PropertyRef Name="Ma_kh" />
+            <PropertyRef Name="Ma_sp" />
+          </Key>
+          <Property Name="Ma_kh" Type="int" Nullable="false" />
+          <Property Name="Ma_sp" Type="int" Nullable="false" />
+          <Property Name="Ho_ten" Type="nvarchar" MaxLength="50" />
+          <Property Name="SDT" Type="char" MaxLength="1" />
+          <Property Name="So_luong" Type="int" />
+          <Property Name="Gia_tien" Type="int" />
+          <Property Name="Tien_khach_tra" Type="int" />
+        </EntityType>
+        <Association Name="FK__thanhToan__Ma_kh__534D60F1">
+          <End Role="khachHang" Type="Self.khachHang" Multiplicity="1" />
+          <End Role="thanhToan" Type="Self.thanhToan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="khachHang">
+              <PropertyRef Name="Ma_kh" />
+            </Principal>
+            <Dependent Role="thanhToan">
+              <PropertyRef Name="Ma_kh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__thanhToan__Ma_sp__5441852A">
+          <End Role="doChoi" Type="Self.doChoi" Multiplicity="1" />
+          <End Role="thanhToan" Type="Self.thanhToan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doChoi">
+              <PropertyRef Name="Ma_sp" />
+            </Principal>
+            <Dependent Role="thanhToan">
+              <PropertyRef Name="Ma_sp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLCHDCModelStoreContainer">
+          <EntitySet Name="doChoi" EntityType="Self.doChoi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="khachHang" EntityType="Self.khachHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nhanVien" EntityType="Self.nhanVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="taiKhoan" EntityType="Self.taiKhoan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="thanhToan" EntityType="Self.thanhToan" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__thanhToan__Ma_kh__534D60F1" Association="Self.FK__thanhToan__Ma_kh__534D60F1">
+            <End Role="khachHang" EntitySet="khachHang" />
+            <End Role="thanhToan" EntitySet="thanhToan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__thanhToan__Ma_sp__5441852A" Association="Self.FK__thanhToan__Ma_sp__5441852A">
+            <End Role="doChoi" EntitySet="doChoi" />
+            <End Role="thanhToan" EntitySet="thanhToan" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLCHDCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="doChoi">
+          <Key>
+            <PropertyRef Name="Ma_sp" />
+          </Key>
+          <Property Name="Ma_sp" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ten_sp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nsx" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Don_gia" Type="Int32" />
+          <Property Name="Loai_do_choi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="thanhToans" Relationship="Self.FK__thanhToan__Ma_sp__5441852A" FromRole="doChoi" ToRole="thanhToan" />
+        </EntityType>
+        <EntityType Name="khachHang">
+          <Key>
+            <PropertyRef Name="Ma_kh" />
+          </Key>
+          <Property Name="Ma_kh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ho_ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Gioi_tinh" Type="Boolean" />
+          <Property Name="Lan_mua" Type="Int32" />
+          <NavigationProperty Name="thanhToans" Relationship="Self.FK__thanhToan__Ma_kh__534D60F1" FromRole="khachHang" ToRole="thanhToan" />
+        </EntityType>
+        <EntityType Name="nhanVien">
+          <Key>
+            <PropertyRef Name="Ma_nv" />
+          </Key>
+          <Property Name="Ma_nv" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ho_ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gioi_tinh" Type="Boolean" />
+          <Property Name="Chuc_vu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ngay_sinh" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="taiKhoan">
+          <Key>
+            <PropertyRef Name="stt" />
+            <PropertyRef Name="tenTK" />
+          </Key>
+          <Property Name="stt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenNV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Chuc_vu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tenTK" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="matkhau" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="thanhToan">
+          <Key>
+            <PropertyRef Name="Ma_kh" />
+            <PropertyRef Name="Ma_sp" />
+          </Key>
+          <Property Name="Ma_kh" Type="Int32" Nullable="false" />
+          <Property Name="Ma_sp" Type="Int32" Nullable="false" />
+          <Property Name="Ho_ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="So_luong" Type="Int32" />
+          <Property Name="Gia_tien" Type="Int32" />
+          <Property Name="Tien_khach_tra" Type="Int32" />
+          <NavigationProperty Name="doChoi" Relationship="Self.FK__thanhToan__Ma_sp__5441852A" FromRole="thanhToan" ToRole="doChoi" />
+          <NavigationProperty Name="khachHang" Relationship="Self.FK__thanhToan__Ma_kh__534D60F1" FromRole="thanhToan" ToRole="khachHang" />
+        </EntityType>
+        <Association Name="FK__thanhToan__Ma_sp__5441852A">
+          <End Role="doChoi" Type="Self.doChoi" Multiplicity="1" />
+          <End Role="thanhToan" Type="Self.thanhToan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doChoi">
+              <PropertyRef Name="Ma_sp" />
+            </Principal>
+            <Dependent Role="thanhToan">
+              <PropertyRef Name="Ma_sp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__thanhToan__Ma_kh__534D60F1">
+          <End Role="khachHang" Type="Self.khachHang" Multiplicity="1" />
+          <End Role="thanhToan" Type="Self.thanhToan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="khachHang">
+              <PropertyRef Name="Ma_kh" />
+            </Principal>
+            <Dependent Role="thanhToan">
+              <PropertyRef Name="Ma_kh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLCHDCEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="doChois" EntityType="Self.doChoi" />
+          <EntitySet Name="khachHangs" EntityType="Self.khachHang" />
+          <EntitySet Name="nhanViens" EntityType="Self.nhanVien" />
+          <EntitySet Name="taiKhoans" EntityType="Self.taiKhoan" />
+          <EntitySet Name="thanhToans" EntityType="Self.thanhToan" />
+          <AssociationSet Name="FK__thanhToan__Ma_sp__5441852A" Association="Self.FK__thanhToan__Ma_sp__5441852A">
+            <End Role="doChoi" EntitySet="doChois" />
+            <End Role="thanhToan" EntitySet="thanhToans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__thanhToan__Ma_kh__534D60F1" Association="Self.FK__thanhToan__Ma_kh__534D60F1">
+            <End Role="khachHang" EntitySet="khachHangs" />
+            <End Role="thanhToan" EntitySet="thanhToans" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLCHDCModelStoreContainer" CdmEntityContainer="QLCHDCEntities">
+          <EntitySetMapping Name="doChois">
+            <EntityTypeMapping TypeName="QLCHDCModel.doChoi">
+              <MappingFragment StoreEntitySet="doChoi">
+                <ScalarProperty Name="Ma_sp" ColumnName="Ma_sp" />
+                <ScalarProperty Name="Ten_sp" ColumnName="Ten_sp" />
+                <ScalarProperty Name="Nsx" ColumnName="Nsx" />
+                <ScalarProperty Name="Don_gia" ColumnName="Don_gia" />
+                <ScalarProperty Name="Loai_do_choi" ColumnName="Loai_do_choi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="khachHangs">
+            <EntityTypeMapping TypeName="QLCHDCModel.khachHang">
+              <MappingFragment StoreEntitySet="khachHang">
+                <ScalarProperty Name="Ma_kh" ColumnName="Ma_kh" />
+                <ScalarProperty Name="Ho_ten" ColumnName="Ho_ten" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="Gioi_tinh" ColumnName="Gioi_tinh" />
+                <ScalarProperty Name="Lan_mua" ColumnName="Lan_mua" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nhanViens">
+            <EntityTypeMapping TypeName="QLCHDCModel.nhanVien">
+              <MappingFragment StoreEntitySet="nhanVien">
+                <ScalarProperty Name="Ma_nv" ColumnName="Ma_nv" />
+                <ScalarProperty Name="Ho_ten" ColumnName="Ho_ten" />
+                <ScalarProperty Name="Diachi" ColumnName="Diachi" />
+                <ScalarProperty Name="Gioi_tinh" ColumnName="Gioi_tinh" />
+                <ScalarProperty Name="Chuc_vu" ColumnName="Chuc_vu" />
+                <ScalarProperty Name="Ngay_sinh" ColumnName="Ngay_sinh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="taiKhoans">
+            <EntityTypeMapping TypeName="QLCHDCModel.taiKhoan">
+              <MappingFragment StoreEntitySet="taiKhoan">
+                <ScalarProperty Name="stt" ColumnName="stt" />
+                <ScalarProperty Name="TenNV" ColumnName="TenNV" />
+                <ScalarProperty Name="Chuc_vu" ColumnName="Chuc_vu" />
+                <ScalarProperty Name="tenTK" ColumnName="tenTK" />
+                <ScalarProperty Name="matkhau" ColumnName="matkhau" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="thanhToans">
+            <EntityTypeMapping TypeName="QLCHDCModel.thanhToan">
+              <MappingFragment StoreEntitySet="thanhToan">
+                <ScalarProperty Name="Ma_kh" ColumnName="Ma_kh" />
+                <ScalarProperty Name="Ma_sp" ColumnName="Ma_sp" />
+                <ScalarProperty Name="Ho_ten" ColumnName="Ho_ten" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="So_luong" ColumnName="So_luong" />
+                <ScalarProperty Name="Gia_tien" ColumnName="Gia_tien" />
+                <ScalarProperty Name="Tien_khach_tra" ColumnName="Tien_khach_tra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

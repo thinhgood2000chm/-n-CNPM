@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLCHDCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="doChoi">
+    <Key>
+      <PropertyRef Name="Ma_sp" />
+    </Key>
+    <Property Name="Ma_sp" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ten_sp" Type="nvarchar" MaxLength="50" />
+    <Property Name="Nsx" Type="nvarchar" MaxLength="50" />
+    <Property Name="Don_gia" Type="int" />
+    <Property Name="Loai_do_choi" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="khachHang">
+    <Key>
+      <PropertyRef Name="Ma_kh" />
+    </Key>
+    <Property Name="Ma_kh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ho_ten" Type="nvarchar" MaxLength="50" />
+    <Property Name="SDT" Type="char" MaxLength="1" />
+    <Property Name="Gioi_tinh" Type="bit" />
+    <Property Name="Lan_mua" Type="int" />
+  </EntityType>
+  <EntityType Name="nhanVien">
+    <Key>
+      <PropertyRef Name="Ma_nv" />
+    </Key>
+    <Property Name="Ma_nv" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ho_ten" Type="nvarchar" MaxLength="50" />
+    <Property Name="Diachi" Type="nvarchar" MaxLength="50" />
+    <Property Name="Gioi_tinh" Type="bit" />
+    <Property Name="Chuc_vu" Type="varchar" MaxLength="50" />
+    <Property Name="Ngay_sinh" Type="datetime" />
+  </EntityType>
+  <EntityType Name="taiKhoan">
+    <Key>
+      <PropertyRef Name="stt" />
+      <PropertyRef Name="tenTK" />
+    </Key>
+    <Property Name="stt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenNV" Type="nvarchar" MaxLength="50" />
+    <Property Name="Chuc_vu" Type="varchar" MaxLength="50" />
+    <Property Name="tenTK" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="matkhau" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="thanhToan">
+    <Key>
+      <PropertyRef Name="Ma_kh" />
+      <PropertyRef Name="Ma_sp" />
+    </Key>
+    <Property Name="Ma_kh" Type="int" Nullable="false" />
+    <Property Name="Ma_sp" Type="int" Nullable="false" />
+    <Property Name="Ho_ten" Type="nvarchar" MaxLength="50" />
+    <Property Name="SDT" Type="char" MaxLength="1" />
+    <Property Name="So_luong" Type="int" />
+    <Property Name="Gia_tien" Type="int" />
+    <Property Name="Tien_khach_tra" Type="int" />
+  </EntityType>
+  <Association Name="FK__thanhToan__Ma_kh__534D60F1">
+    <End Role="khachHang" Type="Self.khachHang" Multiplicity="1" />
+    <End Role="thanhToan" Type="Self.thanhToan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="khachHang">
+        <PropertyRef Name="Ma_kh" />
+      </Principal>
+      <Dependent Role="thanhToan">
+        <PropertyRef Name="Ma_kh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__thanhToan__Ma_sp__5441852A">
+    <End Role="doChoi" Type="Self.doChoi" Multiplicity="1" />
+    <End Role="thanhToan" Type="Self.thanhToan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="doChoi">
+        <PropertyRef Name="Ma_sp" />
+      </Principal>
+      <Dependent Role="thanhToan">
+        <PropertyRef Name="Ma_sp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLCHDCModelStoreContainer">
+    <EntitySet Name="doChoi" EntityType="Self.doChoi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="khachHang" EntityType="Self.khachHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="nhanVien" EntityType="Self.nhanVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="taiKhoan" EntityType="Self.taiKhoan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="thanhToan" EntityType="Self.thanhToan" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__thanhToan__Ma_kh__534D60F1" Association="Self.FK__thanhToan__Ma_kh__534D60F1">
+      <End Role="khachHang" EntitySet="khachHang" />
+      <End Role="thanhToan" EntitySet="thanhToan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__thanhToan__Ma_sp__5441852A" Association="Self.FK__thanhToan__Ma_sp__5441852A">
+      <End Role="doChoi" EntitySet="doChoi" />
+      <End Role="thanhToan" EntitySet="thanhToan" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
