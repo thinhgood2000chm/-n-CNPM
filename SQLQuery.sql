@@ -14,7 +14,7 @@ insert into taikhoan values('Nguyen Van Hoang','employee','Hoangemployee','12345
 create table nhanVien(
 	Ma_nv int IDENTITY(1,1) PRIMARY KEY,
 	Ho_ten nvarchar(50),
-	Diachi nvarchar(50),
+	Diachi nvarchar(50),	
 	Gioi_tinh bit,
 	Chuc_vu varchar(50),
 	Ngay_sinh datetime,
