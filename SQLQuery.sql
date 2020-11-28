@@ -11,6 +11,8 @@ create table taiKhoan(
 )
 insert into taikhoan values('Nguyen Van Dat','admin','Datadmin','123456')
 insert into taikhoan values('Nguyen Van Hoang','employee','Hoangemployee','123456')
+insert into taikhoan values('Nguyen Van Hoang','employee','Hoangpay','123456')
+
 create table nhanVien(
 	Ma_nv int IDENTITY(1,1) PRIMARY KEY,
 	Ho_ten nvarchar(50),
