@@ -54,6 +54,9 @@
             this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtFind = new System.Windows.Forms.TextBox();
+            this.btnFind = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -127,7 +130,7 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.txtCustomerPhoneNum);
             this.panel2.Controls.Add(this.txtCustomerName);
-            this.panel2.Location = new System.Drawing.Point(418, 34);
+            this.panel2.Location = new System.Drawing.Point(418, 62);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(370, 308);
             this.panel2.TabIndex = 3;
@@ -293,7 +296,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(13, 35);
+            this.panel1.Location = new System.Drawing.Point(12, 63);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(393, 382);
             this.panel1.TabIndex = 2;
@@ -307,11 +310,41 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(27, 37);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(109, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "nhập tên khách hàng";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // txtFind
+            // 
+            this.txtFind.Location = new System.Drawing.Point(141, 34);
+            this.txtFind.Name = "txtFind";
+            this.txtFind.Size = new System.Drawing.Size(118, 20);
+            this.txtFind.TabIndex = 5;
+            // 
+            // btnFind
+            // 
+            this.btnFind.Location = new System.Drawing.Point(265, 32);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(75, 23);
+            this.btnFind.TabIndex = 6;
+            this.btnFind.Text = "tìm kiếm ";
+            this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            // 
             // ManageCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 457);
+            this.Controls.Add(this.btnFind);
+            this.Controls.Add(this.txtFind);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
@@ -358,5 +391,8 @@
         private System.Windows.Forms.Label MaKH;
         private System.Windows.Forms.Button btnDeleteTextBox;
         private System.Windows.Forms.Label lbMessage;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtFind;
+        private System.Windows.Forms.Button btnFind;
     }
 }

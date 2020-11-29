@@ -48,6 +48,9 @@
             this.txtNameProduct = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnFind = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtFind = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -253,11 +256,41 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // btnFind
+            // 
+            this.btnFind.Location = new System.Drawing.Point(244, 8);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(75, 23);
+            this.btnFind.TabIndex = 4;
+            this.btnFind.Text = "tìm kiếm";
+            this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(37, 13);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(98, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "nhập tên sản phẩm";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // txtFind
+            // 
+            this.txtFind.Location = new System.Drawing.Point(138, 10);
+            this.txtFind.Name = "txtFind";
+            this.txtFind.Size = new System.Drawing.Size(100, 20);
+            this.txtFind.TabIndex = 6;
+            // 
             // ManageProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtFind);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.btnFind);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "ManageProduct";
@@ -268,6 +301,7 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -293,5 +327,8 @@
         private System.Windows.Forms.Label MaSP;
         private System.Windows.Forms.Label txtStt;
         private System.Windows.Forms.Button btnDeleteTextbox;
+        private System.Windows.Forms.Button btnFind;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtFind;
     }
 }

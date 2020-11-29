@@ -54,6 +54,9 @@
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hiênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cácSảnPhẩmĐãBánToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnFind = new System.Windows.Forms.Button();
+            this.txtFind = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -63,9 +66,9 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(7, 46);
+            this.panel1.Location = new System.Drawing.Point(0, 63);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(393, 382);
+            this.panel1.Size = new System.Drawing.Size(393, 381);
             this.panel1.TabIndex = 0;
             // 
             // dataGridView1
@@ -95,7 +98,7 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.txtAddr);
             this.panel2.Controls.Add(this.txtNameE);
-            this.panel2.Location = new System.Drawing.Point(412, 45);
+            this.panel2.Location = new System.Drawing.Point(408, 62);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(370, 382);
             this.panel2.TabIndex = 1;
@@ -279,21 +282,21 @@
             // đăngKíToolStripMenuItem
             // 
             this.đăngKíToolStripMenuItem.Name = "đăngKíToolStripMenuItem";
-            this.đăngKíToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.đăngKíToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.đăngKíToolStripMenuItem.Text = "Đăng kí";
             this.đăngKíToolStripMenuItem.Click += new System.EventHandler(this.đăngKíToolStripMenuItem_Click);
             // 
             // đăngXuấtToolStripMenuItem
             // 
             this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
             this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
             // 
             // hiênToolStripMenuItem
             // 
             this.hiênToolStripMenuItem.Name = "hiênToolStripMenuItem";
-            this.hiênToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hiênToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.hiênToolStripMenuItem.Text = "Hiển thị thông tin ";
             this.hiênToolStripMenuItem.Click += new System.EventHandler(this.hiênToolStripMenuItem_Click);
             // 
@@ -304,11 +307,40 @@
             this.cácSảnPhẩmĐãBánToolStripMenuItem.Text = "Các sản phẩm đã bán ";
             this.cácSảnPhẩmĐãBánToolStripMenuItem.Click += new System.EventHandler(this.cácSảnPhẩmĐãBánToolStripMenuItem_Click);
             // 
+            // btnFind
+            // 
+            this.btnFind.Location = new System.Drawing.Point(262, 34);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(75, 23);
+            this.btnFind.TabIndex = 3;
+            this.btnFind.Text = "tìm kiếm";
+            this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            // 
+            // txtFind
+            // 
+            this.txtFind.Location = new System.Drawing.Point(143, 37);
+            this.txtFind.Name = "txtFind";
+            this.txtFind.Size = new System.Drawing.Size(100, 20);
+            this.txtFind.TabIndex = 4;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(13, 42);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(104, 13);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "Nhập tên nhân viên ";
+            // 
             // ManageEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 480);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtFind);
+            this.Controls.Add(this.btnFind);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
@@ -354,5 +386,8 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Label txtMaSo;
         private System.Windows.Forms.ToolStripMenuItem hiênToolStripMenuItem;
+        private System.Windows.Forms.Button btnFind;
+        private System.Windows.Forms.TextBox txtFind;
+        private System.Windows.Forms.Label label7;
     }
 }

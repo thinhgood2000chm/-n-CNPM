@@ -156,5 +156,29 @@ namespace QuanLyCuaHang
         {
             this.Close();
         }
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+            Boolean flag = false;
+           string nameFind = txtFind.Text;
+           //int stt = Convert.ToInt32(txtFind.Text);
+           foreach (var nv in db.nhanViens)
+            {
+                if (nv.Ho_ten.Equals(nameFind))
+                {
+                    flag = true;
+                }
+            }
+            if (flag)
+            {
+                
+                 var list2 = db.nhanViens.Where(p=> p.Ho_ten== nameFind).ToList();
+                 dataGridView1.DataSource = list2;
+                
+                /*var list2 = (from a in db.nhanViens where a.Ma_nv == stt select a).ToList();
+                dataGridView1.DataSource = list2;*/
+            }
+            else MessageBox.Show("Không tìm thấy dữ liệu");
+        }
     }
 }

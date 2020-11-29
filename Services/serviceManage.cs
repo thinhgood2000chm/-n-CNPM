@@ -14,6 +14,7 @@ namespace Services
             var listNhanVien = dbNhanVien.nhanViens.ToList();
             return listNhanVien;
         }
+  
         public List<khachHang> getAllKhachHang()
         {
             QLCHDoChoiEntities dbKhachHang = new QLCHDoChoiEntities();
