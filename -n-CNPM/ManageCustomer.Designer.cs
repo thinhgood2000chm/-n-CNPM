@@ -315,21 +315,21 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(27, 37);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(109, 13);
+            this.label5.Size = new System.Drawing.Size(138, 13);
             this.label5.TabIndex = 4;
-            this.label5.Text = "nhập tên khách hàng";
+            this.label5.Text = "nhập thông tin  khách hàng";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // txtFind
             // 
-            this.txtFind.Location = new System.Drawing.Point(141, 34);
+            this.txtFind.Location = new System.Drawing.Point(171, 34);
             this.txtFind.Name = "txtFind";
             this.txtFind.Size = new System.Drawing.Size(118, 20);
             this.txtFind.TabIndex = 5;
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(265, 32);
+            this.btnFind.Location = new System.Drawing.Point(296, 32);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(75, 23);
             this.btnFind.TabIndex = 6;

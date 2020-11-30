@@ -113,5 +113,24 @@ namespace QuanLyCuaHang
                 this.Close();
             }
         }
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+            string nameFind = txtFind.Text;
+            Boolean flag = false;
+            foreach (var acc in db.taiKhoans)
+            {
+                if (acc.TenNV.Equals(nameFind)|| acc.tenTK.Equals(nameFind)|| acc.Chuc_vu.Equals(nameFind))
+                {
+                    flag = true;
+                }
+            }
+            if (flag)
+            {
+                var list2 = db.taiKhoans.Where(p => p.TenNV == nameFind ||p.tenTK==nameFind||p.Chuc_vu==nameFind).ToList();
+                dataGridView1.DataSource = list2;
+            }
+            else MessageBox.Show("Không tìm thấy dữ liệu");
+        }
     }
 }

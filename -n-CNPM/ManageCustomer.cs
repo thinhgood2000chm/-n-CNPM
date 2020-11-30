@@ -122,14 +122,28 @@ namespace QuanLyCuaHang
 
         private void btnChange_Click(object sender, EventArgs e)
         {
-            string MaKH = dataGridView1.SelectedCells[0].OwningRow.Cells["Ma_kh"].Value.ToString();
-            khachHang kh = db.khachHangs.Find(MaKH);
-            kh.Ho_ten = txtCustomerName.Text;
-            kh.Gioi_tinh = radMaleCus.Checked ? true : false;
-            kh.SDT = txtCustomerPhoneNum.Text;
-            kh.Lan_mua = Convert.ToInt32(txtTimes.Text);
-            db.SaveChanges();
-            LoadData();
+            if (!txtCustomerName.Text.Equals("") || !txtMaKh.Text.Equals(""))
+            {
+                String Makh = txtMaKh.Text;
+                khachHang kh = db.khachHangs.Where(p=>p.Ma_kh==Makh).SingleOrDefault();
+                kh.Ho_ten = txtCustomerName.Text;
+                kh.Gioi_tinh = radMaleCus.Checked ? true : false;
+                kh.SDT = txtCustomerPhoneNum.Text;
+                kh.Lan_mua = Convert.ToInt32(txtTimes.Text);
+                db.SaveChanges();
+                LoadData();
+            }
+            else
+            {
+                string MaKH = dataGridView1.SelectedCells[0].OwningRow.Cells["Ma_kh"].Value.ToString();
+                khachHang kh = db.khachHangs.Find(MaKH);
+                kh.Ho_ten = txtCustomerName.Text;
+                kh.Gioi_tinh = radMaleCus.Checked ? true : false;
+                kh.SDT = txtCustomerPhoneNum.Text;
+                kh.Lan_mua = Convert.ToInt32(txtTimes.Text);
+                db.SaveChanges();
+                LoadData();
+            }
 
         }
 
@@ -168,12 +182,16 @@ namespace QuanLyCuaHang
             radMaleCus.Checked=false;
             radMaleCus.Checked = false;
         }
-
+           /*
+            * delete data in khachhang and delete data in hoadon which have same Ma_kh
+            */
         private void btnDelete_Click(object sender, EventArgs e)
         {
             string Ma_kh = txtMaKh.Text;
             khachHang kh = db.khachHangs.Where(p => p.Ma_kh == Ma_kh).SingleOrDefault();
+            HoaDon hd = db.HoaDons.Where(p => p.Ma_kh == Ma_kh).SingleOrDefault();
             db.khachHangs.Remove(kh);
+            db.HoaDons.Remove(hd);
             db.SaveChanges();
             LoadData();
 
@@ -232,14 +250,14 @@ namespace QuanLyCuaHang
             Boolean flag = false;
             foreach (var kh in db.khachHangs)
             {
-                if (kh.Ho_ten.Equals(nameFind))
+                if (kh.Ho_ten.Equals(nameFind)||kh.SDT.Equals(nameFind))
                 {
                     flag = true;
                 }
             }
             if (flag)
             {
-                var list2 = db.khachHangs.Where(p => p.Ho_ten == nameFind).ToList();
+                var list2 = db.khachHangs.Where(p => p.Ho_ten == nameFind|| p.SDT==nameFind).ToList();
                 dataGridView1.DataSource = list2;
             }
             else MessageBox.Show("Không tìm thấy dữ liệu");

@@ -164,7 +164,7 @@ namespace QuanLyCuaHang
            //int stt = Convert.ToInt32(txtFind.Text);
            foreach (var nv in db.nhanViens)
             {
-                if (nv.Ho_ten.Equals(nameFind))
+                if (nv.Ho_ten.Equals(nameFind)|| nv.Chuc_vu.Equals(nameFind))
                 {
                     flag = true;
                 }
@@ -172,7 +172,7 @@ namespace QuanLyCuaHang
             if (flag)
             {
                 
-                 var list2 = db.nhanViens.Where(p=> p.Ho_ten== nameFind).ToList();
+                 var list2 = db.nhanViens.Where(p=> p.Ho_ten== nameFind||p.Chuc_vu==nameFind).ToList();
                  dataGridView1.DataSource = list2;
                 
                 /*var list2 = (from a in db.nhanViens where a.Ma_nv == stt select a).ToList();

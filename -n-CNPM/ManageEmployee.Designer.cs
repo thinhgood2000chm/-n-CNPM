@@ -329,9 +329,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(13, 42);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(104, 13);
+            this.label7.Size = new System.Drawing.Size(130, 13);
             this.label7.TabIndex = 5;
-            this.label7.Text = "Nhập tên nhân viên ";
+            this.label7.Text = "Nhập thông tin nhân viên ";
             // 
             // ManageEmployee
             // 

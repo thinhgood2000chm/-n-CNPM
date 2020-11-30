@@ -42,7 +42,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnPayment = new System.Windows.Forms.Button();
             this.btnShowDataBox = new System.Windows.Forms.Button();
-            this.txtCusPay = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -56,12 +55,14 @@
             this.thôngTinTàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thôngTinNgườiDùngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtCusPay = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.txtCusPay);
             this.panel2.Controls.Add(this.lbMessage);
             this.panel2.Controls.Add(this.cbCost);
             this.panel2.Controls.Add(this.label10);
@@ -75,7 +76,6 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.btnPayment);
             this.panel2.Controls.Add(this.btnShowDataBox);
-            this.panel2.Controls.Add(this.txtCusPay);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label5);
@@ -210,14 +210,6 @@
             this.btnShowDataBox.UseVisualStyleBackColor = true;
             this.btnShowDataBox.Click += new System.EventHandler(this.btnShowDataBox_Click);
             // 
-            // txtCusPay
-            // 
-            this.txtCusPay.Location = new System.Drawing.Point(169, 273);
-            this.txtCusPay.Name = "txtCusPay";
-            this.txtCusPay.Size = new System.Drawing.Size(220, 20);
-            this.txtCusPay.TabIndex = 6;
-            this.txtCusPay.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -336,6 +328,14 @@
             this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
             this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
             // 
+            // txtCusPay
+            // 
+            this.txtCusPay.Location = new System.Drawing.Point(169, 273);
+            this.txtCusPay.Name = "txtCusPay";
+            this.txtCusPay.Size = new System.Drawing.Size(220, 20);
+            this.txtCusPay.TabIndex = 6;
+            this.txtCusPay.TextChanged += new System.EventHandler(this.txtCusPay_TextChanged);
+            // 
             // Payment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -368,7 +368,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtCusPay;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem thôngTinTàiKhoảnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thôngTinNgườiDùngToolStripMenuItem;
@@ -386,5 +385,6 @@
         private System.Windows.Forms.ComboBox cbCost;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label lbMessage;
+        private System.Windows.Forms.TextBox txtCusPay;
     }
 }

@@ -30,12 +30,6 @@ namespace QuanLyCuaHang
 
         }
 
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-  
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -92,38 +86,44 @@ namespace QuanLyCuaHang
 
         private void btnPayment_Click(object sender, EventArgs e)
         {
-            khachHang kh = new khachHang()
+            if (Convert.ToInt32(txtCusPay.Text) < Convert.ToInt32(cbMoneyNeed.Text))
             {
-                Ma_kh = txtIdCus.Text,
-                Ho_ten = txtNameCus.Text,
-                SDT = txtPhone.Text
-            };
-            db.khachHangs.Add(kh);
-            //db.SaveChanges();
+                MessageBox.Show("Số tiền khách trả phải lớn hơn số tiền cần trả");
+            }
+            else {
+                khachHang kh = new khachHang()
+                {
+                    Ma_kh = txtIdCus.Text,
+                    Ho_ten = txtNameCus.Text,
+                    SDT = txtPhone.Text
+                };
+                db.khachHangs.Add(kh);
+                //db.SaveChanges();
 
-            string txtMoneyNeed = cbMoneyNeed.Text;
-            HoaDon hd = new HoaDon()
-            {
-                
-                Ma_kh = txtIdCus.Text,
-                Ho_ten = txtNameCus.Text,
-                SDT = txtPhone.Text,
-                Ma_sp = cbIdproduct.Text,
-                So_luong = Convert.ToInt32(txtAmounts.Text),
-                Gia_tien = Convert.ToInt32(txtMoneyNeed),
-                Tien_khach_tra=Convert.ToInt32(txtCusPay.Text)
+                string txtMoneyNeed = cbMoneyNeed.Text;
+                HoaDon hd = new HoaDon()
+                {
 
-            };
-            db.HoaDons.Add(hd);
-            db.SaveChanges();
-            
-            /*
-             * after add infor of hoaDon, move on QLKH to continue update data of customer
-             */
-            ManageCustomer manageCustomer = new ManageCustomer();
-            this.Hide();
-            manageCustomer.ShowDialog();
-            this.Show();
+                    Ma_kh = txtIdCus.Text,
+                    Ho_ten = txtNameCus.Text,
+                    SDT = txtPhone.Text,
+                    Ma_sp = cbIdproduct.Text,
+                    So_luong = Convert.ToInt32(txtAmounts.Text),
+                    Gia_tien = Convert.ToInt32(txtMoneyNeed),
+                    Tien_khach_tra = Convert.ToInt32(txtCusPay.Text)
+
+                };
+                db.HoaDons.Add(hd);
+                db.SaveChanges();
+
+                /*
+                 * after add infor of hoaDon, move on QLKH to continue update data of customer
+                 */
+                ManageCustomer manageCustomer = new ManageCustomer();
+                this.Hide();
+                manageCustomer.ShowDialog();
+                this.Show();
+            }
         }
 
 
@@ -177,6 +177,13 @@ namespace QuanLyCuaHang
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        /*
+         * check data input customer give must > cost
+         */
+        private void txtCusPay_TextChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }
