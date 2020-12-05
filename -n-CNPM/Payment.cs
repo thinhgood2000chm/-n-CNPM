@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -48,6 +49,7 @@ namespace QuanLyCuaHang
          */
 
         //List<string> listItem;
+        // hien thi du lieu len combox
         private void btnShowDataBox_Click(object sender, EventArgs e)
         {
             //cách 1 
@@ -83,17 +85,29 @@ namespace QuanLyCuaHang
         {
 
         }
-
+        // ham thuc hien chuc nang thanh toan
         private void btnPayment_Click(object sender, EventArgs e)
         {
+            /*
+         * check data input customer give must > cost
+         */
             if (Convert.ToInt32(txtCusPay.Text) < Convert.ToInt32(cbMoneyNeed.Text))
             {
                 MessageBox.Show("Số tiền khách trả phải lớn hơn số tiền cần trả");
             }
             else {
+                ArrayList temp = new ArrayList();
+           
+                foreach (var user in db.khachHangs)
+                {
+
+                    temp.Add(Convert.ToInt32(user.stt));
+
+
+                }
                 khachHang kh = new khachHang()
                 {
-                    Ma_kh = txtIdCus.Text,
+                    Ma_kh = "KH" + Convert.ToString(temp.Count + 1),
                     Ho_ten = txtNameCus.Text,
                     SDT = txtPhone.Text
                 };
@@ -104,7 +118,7 @@ namespace QuanLyCuaHang
                 HoaDon hd = new HoaDon()
                 {
 
-                    Ma_kh = txtIdCus.Text,
+                    Ma_kh = "KH" + Convert.ToString(temp.Count + 1),
                     Ho_ten = txtNameCus.Text,
                     SDT = txtPhone.Text,
                     Ma_sp = cbIdproduct.Text,
@@ -178,9 +192,7 @@ namespace QuanLyCuaHang
         {
             this.Close();
         }
-        /*
-         * check data input customer give must > cost
-         */
+        
         private void txtCusPay_TextChanged(object sender, EventArgs e)
         {
            

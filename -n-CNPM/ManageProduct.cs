@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -41,7 +42,7 @@ namespace QuanLyCuaHang
         {
 
         }
-
+        // hien thị data len textbox khi nhan vao gridview
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
@@ -65,25 +66,58 @@ namespace QuanLyCuaHang
             txtProducer.Text = nsx;
             cbSpicesToy.Text = loaiDc;
             txtCost.Text = donGia;
+
+            if (txtStt.Text == "")
+            {
+                btnAdd.Enabled = true;
+                btnChange.Enabled = false;
+                btnDelete.Enabled = false;
+            }
+            else
+            {
+                btnAdd.Enabled = false;
+                btnChange.Enabled = true;
+                btnDelete.Enabled = true;
+            }
         }
+
+        // ham xoa du lieu trne textbox
+        public void ClearData()
+        {
+            txtMaSp.Text = "";
+            txtNameProduct.Text = "";
+            txtCost.Text = "";
+            txtProducer.Text = "";
+            cbSpicesToy.Text = "";
+            btnAdd.Enabled = true;
+            btnDelete.Enabled = true;
+            btnChange.Enabled = true;
+        }
+  
 
         private void ManageProduct_Load(object sender, EventArgs e)
         {
             LoadData();
         }
-
+        // chuc nang them 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (txtMaSp.Text =="" || txtNameProduct.Text == "" || txtProducer.Text == "" || txtCost.Text == "" || cbSpicesToy.Text=="")
+            if ( txtNameProduct.Text == "" || txtProducer.Text == "" || txtCost.Text == "" || cbSpicesToy.Text=="")
             {
                 MessageBox.Show("Bị thiếu thông tin vui lòng nhập lại");
             }
             else
             {
+                ArrayList temp = new ArrayList();
+                foreach (var product in db.doChois)
+                {
+
+                    temp.Add(Convert.ToInt32(product.stt));
+                }
 
                 doChoi dc = new doChoi()
                 {
-                    Ma_sp = txtMaSp.Text,
+                    Ma_sp ="sp"+ Convert.ToString(temp.Count + 1),
                     Ten_sp = txtNameProduct.Text,
                     Nsx = txtProducer.Text,
                     Don_gia = Convert.ToInt32(txtCost.Text),
@@ -95,11 +129,7 @@ namespace QuanLyCuaHang
                 LoadData();
 
                 // after add successfullly, delete data in textbox
-                txtMaSp.Text = "";
-                txtNameProduct.Text = "";
-                txtCost.Text = "";
-                txtProducer.Text = "";
-                cbSpicesToy.Text = "";
+                ClearData();
             }
         }
 
@@ -108,7 +138,7 @@ namespace QuanLyCuaHang
             DialogResult dialog = MessageBox.Show("bạn có chắc muốn thoát","thoát ứng dụng", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
             this.Close();
         }
-
+        // chuc nang chinh sua 
         private void btnChange_Click(object sender, EventArgs e)
         { 
             string maSp = dataGridView1.SelectedCells[0].OwningRow.Cells["Ma_sp"].Value.ToString();
@@ -126,16 +156,9 @@ namespace QuanLyCuaHang
 
         private void btnDeleteTextbox_Click(object sender, EventArgs e)
         {
-            txtStt.Text = "";
-            txtMaSp.Text = "";
-            txtNameProduct.Text = "";
-            txtProducer.Text = "";
-            txtNameProduct.Text = "";
-            cbSpicesToy.Text = "";
-            txtCost.Text = "";
-
+            ClearData();
         }
-
+        // chuc nang xoa 
         private void btnDelete_Click(object sender, EventArgs e)
         {
            int stt =Convert.ToInt32(txtStt.Text);
@@ -163,6 +186,7 @@ namespace QuanLyCuaHang
 
         }
 
+        // chưc nang tìm kiem 
         private void btnFind_Click(object sender, EventArgs e)
         {
             string nameFind = txtFind.Text;
@@ -180,6 +204,22 @@ namespace QuanLyCuaHang
                 dataGridView1.DataSource = list2;
             }
             else  MessageBox.Show("Không tìm thấy dữ liệu");
+        }
+
+        private void txtMaSp_TextChanged(object sender, EventArgs e)
+        {
+     
+        }
+        // thiet lap enable nút bam 
+        private void txtNameProduct_TextChanged(object sender, EventArgs e)
+        {
+            if (txtMaSp.Text.Equals(""))
+            {
+                btnAdd.Enabled = true;
+                btnChange.Enabled = false;
+                btnDelete.Enabled = false;
+
+            }
         }
     }
 }

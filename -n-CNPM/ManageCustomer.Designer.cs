@@ -35,9 +35,9 @@
             this.thôngTinNgườiDùngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtTenTK = new System.Windows.Forms.Label();
             this.lbMessage = new System.Windows.Forms.Label();
             this.btnDeleteTextBox = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.txtMaKh = new System.Windows.Forms.TextBox();
             this.MaKH = new System.Windows.Forms.Label();
             this.txtTimes = new System.Windows.Forms.TextBox();
@@ -113,9 +113,9 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.txtTenTK);
             this.panel2.Controls.Add(this.lbMessage);
             this.panel2.Controls.Add(this.btnDeleteTextBox);
-            this.panel2.Controls.Add(this.btnAdd);
             this.panel2.Controls.Add(this.txtMaKh);
             this.panel2.Controls.Add(this.MaKH);
             this.panel2.Controls.Add(this.txtTimes);
@@ -136,6 +136,16 @@
             this.panel2.TabIndex = 3;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
+            // txtTenTK
+            // 
+            this.txtTenTK.AutoSize = true;
+            this.txtTenTK.ForeColor = System.Drawing.SystemColors.Control;
+            this.txtTenTK.Location = new System.Drawing.Point(30, 18);
+            this.txtTenTK.Name = "txtTenTK";
+            this.txtTenTK.Size = new System.Drawing.Size(35, 13);
+            this.txtTenTK.TabIndex = 18;
+            this.txtTenTK.Text = "label7";
+            // 
             // lbMessage
             // 
             this.lbMessage.AutoSize = true;
@@ -155,18 +165,9 @@
             this.btnDeleteTextBox.UseVisualStyleBackColor = true;
             this.btnDeleteTextBox.Click += new System.EventHandler(this.btnDeleteTextBox_Click);
             // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(58, 208);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 7;
-            this.btnAdd.Text = "Thêm";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
             // txtMaKh
             // 
+            this.txtMaKh.Enabled = false;
             this.txtMaKh.Location = new System.Drawing.Point(106, 28);
             this.txtMaKh.Name = "txtMaKh";
             this.txtMaKh.Size = new System.Drawing.Size(199, 20);
@@ -201,7 +202,7 @@
             // 
             // btnChange
             // 
-            this.btnChange.Location = new System.Drawing.Point(245, 208);
+            this.btnChange.Location = new System.Drawing.Point(71, 219);
             this.btnChange.Name = "btnChange";
             this.btnChange.Size = new System.Drawing.Size(75, 23);
             this.btnChange.TabIndex = 8;
@@ -211,7 +212,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(152, 242);
+            this.btnDelete.Location = new System.Drawing.Point(216, 219);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 9;
@@ -292,6 +293,7 @@
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.Size = new System.Drawing.Size(200, 20);
             this.txtCustomerName.TabIndex = 2;
+            this.txtCustomerName.TextChanged += new System.EventHandler(this.txtCustomerName_TextChanged);
             // 
             // panel1
             // 
@@ -386,7 +388,6 @@
         private System.Windows.Forms.ToolStripMenuItem thôngTinTàiKhoảnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thôngTinNgườiDùngToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem đăngXuấtToolStripMenuItem;
-        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.TextBox txtMaKh;
         private System.Windows.Forms.Label MaKH;
         private System.Windows.Forms.Button btnDeleteTextBox;
@@ -394,5 +395,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtFind;
         private System.Windows.Forms.Button btnFind;
+        private System.Windows.Forms.Label txtTenTK;
     }
 }

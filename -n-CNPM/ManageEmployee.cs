@@ -17,16 +17,35 @@ namespace QuanLyCuaHang
         {
             InitializeComponent();
         }
-   
+        // ham xoa du lieu trne textbox
+        public void ClearData()
+        {
+            txtNameE.Text = "";
+            txtAddr.Text = "";
+            txtPosition.Text = "";
+            dtBirth.Value = DateTime.Now;
+            radFemale.Checked = false;
+            radMale.Checked = false ;
+            btnAdd.Enabled = true;
+            btnDelete.Enabled = true;
+            btnChange.Enabled = true;
+        }
         private void LoadData()
         {
             serviceManage data = new serviceManage();
             var list = data.getAllNhanVien();
             dataGridView1.DataSource = list;
         }
+        //thiet lap enable cac nut 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            if (txtMaSo.Text.Equals(""))
+            {
+                btnAdd.Enabled = true;
+                btnChange.Enabled = false;
+                btnDelete.Enabled = false;
 
+            }
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -43,7 +62,7 @@ namespace QuanLyCuaHang
         {
          
         }
-
+        // hien thị data len textbox khi nhan vao gridview
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
@@ -69,6 +88,18 @@ namespace QuanLyCuaHang
             radFemale.Checked = !isMale;
             dtBirth.Value = birth;
 
+            if (txtMaSo.Text == "")
+            {
+                btnAdd.Enabled = true;
+                btnChange.Enabled = false;
+                btnDelete.Enabled = false;
+            }
+            else
+            {
+                btnAdd.Enabled = false;
+                btnChange.Enabled = true;
+                btnDelete.Enabled = true;
+            }
         }
 
         private void cácSảnPhẩmĐãBánToolStripMenuItem_Click(object sender, EventArgs e)
@@ -94,7 +125,7 @@ namespace QuanLyCuaHang
         // add new employee
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (txtMaSo.Text == "" || txtAddr.Text == "" || txtNameE.Text == "" || txtPosition.Text == ""|| (radFemale.Checked=false && radMale.Checked==false ))
+            if (txtAddr.Text == "" || txtNameE.Text == "" || txtPosition.Text == ""|| (radFemale.Checked=false && radMale.Checked==false ))
             {
                 MessageBox.Show("Bị thiếu thông tin vui lòng nhập lại");
             }
@@ -114,16 +145,11 @@ namespace QuanLyCuaHang
                 MessageBox.Show("thêm nhân viên thành công ");
 
                 // after add successfullly, delete data in textbox
-
-                txtNameE.Text = "";
-                txtAddr.Text = "";
-                txtPosition.Text = "";
-                dtBirth.Value = DateTime.Now;
-                radFemale.Checked = false;
-                radMale.Checked = true;
+                ClearData();
+    
             }
         }
-
+        // ham sau thông tin 
         private void btnChange_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(dataGridView1.SelectedCells[0].OwningRow.Cells["Ma_nv"].Value.ToString());
@@ -136,7 +162,7 @@ namespace QuanLyCuaHang
             db.SaveChanges();
             LoadData();
         }
-
+        // ham xoa thong tin 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(txtMaSo.Text);
@@ -144,6 +170,7 @@ namespace QuanLyCuaHang
             db.nhanViens.Remove(nv);
             db.SaveChanges();
             LoadData();
+            ClearData();
         }
         // menuStrip chuyên qua màn hình account
         private void hiênToolStripMenuItem_Click(object sender, EventArgs e)

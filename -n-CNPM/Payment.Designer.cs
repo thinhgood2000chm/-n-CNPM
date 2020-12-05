@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtCusPay = new System.Windows.Forms.TextBox();
             this.lbMessage = new System.Windows.Forms.Label();
             this.cbCost = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -37,8 +38,6 @@
             this.cbNameProd = new System.Windows.Forms.ComboBox();
             this.cbIdproduct = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtIdCus = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnPayment = new System.Windows.Forms.Button();
             this.btnShowDataBox = new System.Windows.Forms.Button();
@@ -55,7 +54,6 @@
             this.thôngTinTàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thôngTinNgườiDùngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtCusPay = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -71,8 +69,6 @@
             this.panel2.Controls.Add(this.cbNameProd);
             this.panel2.Controls.Add(this.cbIdproduct);
             this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.txtIdCus);
-            this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.btnPayment);
             this.panel2.Controls.Add(this.btnShowDataBox);
@@ -86,11 +82,19 @@
             this.panel2.Controls.Add(this.txtPhone);
             this.panel2.Controls.Add(this.txtNameCus);
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(57, 27);
+            this.panel2.Location = new System.Drawing.Point(57, 40);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(583, 326);
+            this.panel2.Size = new System.Drawing.Size(583, 307);
             this.panel2.TabIndex = 5;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // txtCusPay
+            // 
+            this.txtCusPay.Location = new System.Drawing.Point(169, 273);
+            this.txtCusPay.Name = "txtCusPay";
+            this.txtCusPay.Size = new System.Drawing.Size(220, 20);
+            this.txtCusPay.TabIndex = 6;
+            this.txtCusPay.TextChanged += new System.EventHandler(this.txtCusPay_TextChanged);
             // 
             // lbMessage
             // 
@@ -103,6 +107,7 @@
             // 
             // cbCost
             // 
+            this.cbCost.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCost.FormattingEnabled = true;
             this.cbCost.Location = new System.Drawing.Point(441, 174);
             this.cbCost.Name = "cbCost";
@@ -129,6 +134,7 @@
             // 
             // cbMoneyNeed
             // 
+            this.cbMoneyNeed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMoneyNeed.FormattingEnabled = true;
             this.cbMoneyNeed.Location = new System.Drawing.Point(169, 240);
             this.cbMoneyNeed.Name = "cbMoneyNeed";
@@ -137,6 +143,7 @@
             // 
             // cbNameProd
             // 
+            this.cbNameProd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbNameProd.FormattingEnabled = true;
             this.cbNameProd.Location = new System.Drawing.Point(128, 174);
             this.cbNameProd.Name = "cbNameProd";
@@ -145,6 +152,7 @@
             // 
             // cbIdproduct
             // 
+            this.cbIdproduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbIdproduct.FormattingEnabled = true;
             this.cbIdproduct.Location = new System.Drawing.Point(129, 140);
             this.cbIdproduct.Name = "cbIdproduct";
@@ -161,28 +169,11 @@
             this.label9.TabIndex = 32;
             this.label9.Text = "Mã sản phẩm";
             // 
-            // txtIdCus
-            // 
-            this.txtIdCus.Location = new System.Drawing.Point(128, 39);
-            this.txtIdCus.Name = "txtIdCus";
-            this.txtIdCus.Size = new System.Drawing.Size(104, 20);
-            this.txtIdCus.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(21, 46);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 13);
-            this.label2.TabIndex = 30;
-            this.label2.Text = "Mã khách hàng";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(198, 0);
+            this.label1.Location = new System.Drawing.Point(198, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 18);
             this.label1.TabIndex = 7;
@@ -328,14 +319,6 @@
             this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
             this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
             // 
-            // txtCusPay
-            // 
-            this.txtCusPay.Location = new System.Drawing.Point(169, 273);
-            this.txtCusPay.Name = "txtCusPay";
-            this.txtCusPay.Size = new System.Drawing.Size(220, 20);
-            this.txtCusPay.TabIndex = 6;
-            this.txtCusPay.TextChanged += new System.EventHandler(this.txtCusPay_TextChanged);
-            // 
             // Payment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -375,8 +358,6 @@
         private System.Windows.Forms.Button btnShowDataBox;
         private System.Windows.Forms.Button btnPayment;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtIdCus;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbIdproduct;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cbNameProd;

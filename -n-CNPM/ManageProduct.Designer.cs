@@ -101,10 +101,12 @@
             // 
             // txtMaSp
             // 
+            this.txtMaSp.Enabled = false;
             this.txtMaSp.Location = new System.Drawing.Point(95, 25);
             this.txtMaSp.Name = "txtMaSp";
             this.txtMaSp.Size = new System.Drawing.Size(200, 20);
             this.txtMaSp.TabIndex = 0;
+            this.txtMaSp.TextChanged += new System.EventHandler(this.txtMaSp_TextChanged);
             // 
             // MaSP
             // 
@@ -128,6 +130,7 @@
             // 
             // cbSpicesToy
             // 
+            this.cbSpicesToy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSpicesToy.FormattingEnabled = true;
             this.cbSpicesToy.Items.AddRange(new object[] {
             "dưới 3 tuổi",
@@ -238,6 +241,7 @@
             this.txtNameProduct.Name = "txtNameProduct";
             this.txtNameProduct.Size = new System.Drawing.Size(200, 20);
             this.txtNameProduct.TabIndex = 1;
+            this.txtNameProduct.TextChanged += new System.EventHandler(this.txtNameProduct_TextChanged);
             // 
             // panel1
             // 

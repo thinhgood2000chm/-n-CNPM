@@ -35,8 +35,8 @@ stt int IDENTITY(1,1),
 	primary key (Ma_kh)
 )
 
-insert into khachHang values('KH001','Bui Manh Dung','+840333751245','1',2)
-insert into khachHang values('KH002','Nguyen Minh Nhat','+840333751275','1',5)
+--insert into khachHang values('KH1','Bui Manh Dung','+840333751245','1',2)
+--insert into khachHang values('KH2','Nguyen Minh Nhat','+840333751275','1',5)
 
 
 
@@ -50,8 +50,8 @@ stt int IDENTITY(1,1),
 	primary key(Ma_sp)
 )
 
-insert into doChoi values('sp01','Xe dieu khien tu xa','Thanh Hoa',500000,'tren 15 tuoi')
-insert into doChoi values('sp02','Vit cao su','Ben Tre',7000,'tu 3 den 6 tuoi') 
+insert into doChoi values('sp1','Xe dieu khien tu xa','Thanh Hoa',500000,'tren 15 tuoi')
+insert into doChoi values('sp2','Vit cao su','Ben Tre',7000,'tu 3 den 6 tuoi') 
 
 
 
@@ -69,8 +69,8 @@ create table HoaDon(
 	foreign key (Ma_sp) references doChoi(Ma_sp)
 )
 
-insert into HoaDon values('KH001','sp01','Bui Manh Dung','+840333751245',1,500000,500000)
-insert into HoaDon values('KH002','sp01','Bui Manh Dung','+840333751275',1,500000,500000)
+insert into HoaDon values('KH1','sp01','Bui Manh Dung','+840333751245',1,500000,500000)
+insert into HoaDon values('KH2','sp01','Bui Manh Dung','+840333751275',1,500000,500000)
 
 use QLCHDoChoi
 
@@ -80,6 +80,9 @@ select * from taiKhoan
 drop table taiKhoan
 select * from khachHang
 select * from doChoi
+select * from HoaDon
 
-delete from HoaDon
+delete from HoaDon where Ma_kh ='KH9'
 delete from doChoi
+
+delete from khac
